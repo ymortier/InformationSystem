@@ -10,21 +10,20 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
 import org.obeonetwork.dsl.environment.ObeoDSMObject;
 import org.obeonetwork.dsl.interaction.Interaction;
 import org.obeonetwork.dsl.interaction.InteractionFactory;
 import org.obeonetwork.dsl.interaction.design.Activator;
 import org.obeonetwork.dsl.interaction.design.ui.extension.providers.InteractionAnalysisContextMenuActionProvider;
-
-import fr.obeo.dsl.common.tools.api.editing.EditingDomainFactoryService;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
 
 public class CreateSequenceDiagramAction extends Action {
 
@@ -87,7 +86,7 @@ public class CreateSequenceDiagramAction extends Action {
 						Interaction interaction = InteractionFactory.eINSTANCE.createInteraction();
 						context.getBehaviours().add(interaction);
 						
-						Collection<RepresentationDescription> descs = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(), interaction);
+						Collection<RepresentationDescription> descs = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(true), interaction);
 						for (RepresentationDescription desc : descs) {
 							Viewpoint viewpoint = (Viewpoint)desc.eContainer();
 							

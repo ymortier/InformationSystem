@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.BindingdialectFactory;
 import org.obeonetwork.dsl.environment.bindingdialect.BindingdialectPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge;
@@ -21,8 +22,6 @@ import org.obeonetwork.dsl.environment.bindingdialect.DBindingEditor;
 import org.obeonetwork.dsl.environment.bindingdialect.DBoundElement;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.description.impl.DescriptionPackageImpl;
-
-import fr.obeo.dsl.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc -->

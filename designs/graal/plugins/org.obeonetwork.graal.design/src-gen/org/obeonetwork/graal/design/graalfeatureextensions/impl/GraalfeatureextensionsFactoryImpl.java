@@ -9,12 +9,11 @@ package org.obeonetwork.graal.design.graalfeatureextensions.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.obeonetwork.graal.design.graalfeatureextensions.*;
+import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsFactory;
+import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsPackage;
+import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
 
 /**
  * <!-- begin-user-doc -->

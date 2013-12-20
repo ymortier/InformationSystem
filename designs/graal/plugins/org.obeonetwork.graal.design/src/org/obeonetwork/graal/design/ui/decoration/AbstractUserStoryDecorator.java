@@ -21,6 +21,15 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.obeonetwork.graal.GraalObject;
@@ -30,16 +39,6 @@ import org.obeonetwork.graal.UserStory;
 import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsPackage;
 import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
 import org.obeonetwork.graal.design.services.configuration.UIConfigurationServices;
-
-import fr.obeo.dsl.viewpoint.DAnalysis;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DDiagramElementContainer;
-import fr.obeo.dsl.viewpoint.DEdge;
-import fr.obeo.dsl.viewpoint.DNode;
-import fr.obeo.dsl.viewpoint.EdgeTarget;
-import fr.obeo.dsl.viewpoint.business.api.query.EObjectQuery;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.diagram.edit.api.part.IDiagramElementEditPart;
 
 /**
  * User story decorators' superclass

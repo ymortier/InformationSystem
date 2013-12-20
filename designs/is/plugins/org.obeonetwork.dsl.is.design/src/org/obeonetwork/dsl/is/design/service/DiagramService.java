@@ -1,7 +1,7 @@
 package org.obeonetwork.dsl.is.design.service;
 
-import fr.obeo.dsl.viewpoint.DDiagram;
-import fr.obeo.dsl.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.Layer;
 
 public class DiagramService {
 

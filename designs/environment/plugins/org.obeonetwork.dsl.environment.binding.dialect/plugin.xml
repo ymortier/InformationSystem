@@ -34,7 +34,7 @@
             genModel="model/bindingdialect.genmodel"/>
    </extension>
    <extension
-         point="fr.obeo.dsl.viewpoint.dialect">
+         point="org.eclipse.sirius.dialect">
       <dialect
             class="org.obeonetwork.dsl.environment.binding.dialect.BindingDialect">
       </dialect>

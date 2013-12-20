@@ -4,11 +4,10 @@
 package org.obeonetwork.graal.design.command;
 
 import org.eclipse.emf.common.command.AbstractCommand;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.obeonetwork.graal.UserStory;
 import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
 import org.obeonetwork.graal.design.services.configuration.UIConfigurationServices;
-
-import fr.obeo.dsl.viewpoint.DAnalysis;
 
 /**
  * @author <a href="goulwen.lefur@obeo.fr">Goulwen Le Fur</a>

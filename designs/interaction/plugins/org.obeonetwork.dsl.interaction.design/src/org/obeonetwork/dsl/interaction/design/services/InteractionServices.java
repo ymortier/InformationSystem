@@ -14,6 +14,8 @@ import java.util.Stack;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.obeonetwork.dsl.interaction.CombinedFragment;
 import org.obeonetwork.dsl.interaction.End;
 import org.obeonetwork.dsl.interaction.Execution;
@@ -24,9 +26,6 @@ import org.obeonetwork.dsl.interaction.Message;
 import org.obeonetwork.dsl.interaction.Operand;
 import org.obeonetwork.dsl.interaction.Participant;
 import org.obeonetwork.dsl.interaction.StateInvariant;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
 /**
  * Java services for the sample 'Interaction' sequence diagrams.

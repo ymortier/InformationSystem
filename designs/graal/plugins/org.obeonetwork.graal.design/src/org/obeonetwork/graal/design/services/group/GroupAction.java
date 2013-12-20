@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.ui.PlatformUI;
 import org.obeonetwork.graal.AbstractTask;
 import org.obeonetwork.graal.GraalFactory;
@@ -24,8 +25,6 @@ import org.obeonetwork.graal.System;
 import org.obeonetwork.graal.TasksContainer;
 import org.obeonetwork.graal.TasksGroup;
 import org.obeonetwork.graal.design.services.task.TaskUtils;
-
-import fr.obeo.dsl.viewpoint.AbstractDNode;
 
 /**
  * Class used to group tasks into a new group

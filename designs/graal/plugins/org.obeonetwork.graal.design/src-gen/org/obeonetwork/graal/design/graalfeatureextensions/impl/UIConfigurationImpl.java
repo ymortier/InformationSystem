@@ -6,25 +6,17 @@
  */
 package org.obeonetwork.graal.design.graalfeatureextensions.impl;
 
-import fr.obeo.dsl.viewpoint.DAnalysis;
-
-import fr.obeo.dsl.viewpoint.impl.DFeatureExtensionImpl;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl;
 import org.obeonetwork.graal.UserStory;
-
 import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsPackage;
 import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
 

@@ -17,17 +17,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.business.api.featureextensions.FeatureExtensionsManager;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.obeonetwork.graal.design.extension.GraalFeatureExtension;
 import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsFactory;
 import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
-
-import fr.obeo.dsl.viewpoint.DAnalysis;
-import fr.obeo.dsl.viewpoint.DAnalysisSessionEObject;
-import fr.obeo.dsl.viewpoint.DFeatureExtension;
-import fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtensionsManager;
-import fr.obeo.dsl.viewpoint.business.api.query.EObjectQuery;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
 /**
  * Services to handle user preferences about Graal UI 

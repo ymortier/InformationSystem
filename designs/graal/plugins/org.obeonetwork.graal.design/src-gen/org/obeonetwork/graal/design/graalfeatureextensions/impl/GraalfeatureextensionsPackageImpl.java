@@ -6,16 +6,12 @@
  */
 package org.obeonetwork.graal.design.graalfeatureextensions.impl;
 
-import fr.obeo.dsl.viewpoint.ViewpointPackage;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.obeonetwork.graal.GraalPackage;
-
 import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsFactory;
 import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsPackage;
 import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;

@@ -9,15 +9,14 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.IContextMenuActionProvider;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.obeonetwork.dsl.environment.ObeoDSMObject;
 import org.obeonetwork.dsl.statemachine.StateMachine;
 import org.obeonetwork.dsl.statemachine.design.ui.extension.actions.CreateStateMachineDiagramAction;
 import org.obeonetwork.dsl.statemachine.design.ui.extension.actions.NewStateMachineDiagramMenuAction;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
-import fr.obeo.dsl.viewpoint.ui.tools.internal.views.sessionview.extension.IContextMenuActionProvider;
 
 public class StateMachineAnalysisContextMenuActionProvider implements IContextMenuActionProvider {
 	
@@ -33,7 +32,7 @@ public class StateMachineAnalysisContextMenuActionProvider implements IContextMe
 					// Let's check if the "StateMachine" viewpoint is selected
 					Session session = SessionManager.INSTANCE.getSession((ObeoDSMObject)selectedObject);
 					if (session != null) {
-						for (Viewpoint viewpoint : session.getSelectedViewpoints()) {
+						for (Viewpoint viewpoint : session.getSelectedViewpoints(true)) {
 							if (isStateMachineViewpoint(viewpoint)) {
 								IAction action = computeAction((ObeoDSMObject)selectedObject);
 								if (action != null) {

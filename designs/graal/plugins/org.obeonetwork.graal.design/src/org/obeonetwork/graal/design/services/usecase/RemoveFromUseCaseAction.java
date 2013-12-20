@@ -13,12 +13,11 @@ package org.obeonetwork.graal.design.services.usecase;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.obeonetwork.graal.AbstractTask;
 import org.obeonetwork.graal.Task;
 import org.obeonetwork.graal.TasksGroup;
 import org.obeonetwork.graal.UseCase;
-
-import fr.obeo.dsl.viewpoint.AbstractDNode;
 
 /**
  * Class used to remove a task or a group from a Use case

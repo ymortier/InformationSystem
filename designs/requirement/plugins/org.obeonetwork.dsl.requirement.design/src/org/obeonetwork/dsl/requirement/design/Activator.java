@@ -15,11 +15,10 @@ package org.obeonetwork.dsl.requirement.design;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
-import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
 
 /**
  * The activator class controls the plug-in life cycle

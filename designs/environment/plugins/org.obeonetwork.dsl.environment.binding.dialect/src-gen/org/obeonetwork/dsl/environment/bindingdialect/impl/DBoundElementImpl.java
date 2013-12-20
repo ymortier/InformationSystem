@@ -24,11 +24,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
 import org.obeonetwork.dsl.environment.bindingdialect.BindingdialectPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge;
 import org.obeonetwork.dsl.environment.bindingdialect.DBoundElement;
-
-import fr.obeo.dsl.viewpoint.impl.DRepresentationElementImpl;
 
 /**
  * <!-- begin-user-doc -->

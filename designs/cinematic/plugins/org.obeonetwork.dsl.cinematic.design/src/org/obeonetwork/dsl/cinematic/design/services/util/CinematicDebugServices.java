@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import fr.obeo.acceleo.gen.template.eval.ENode;
 import fr.obeo.acceleo.gen.template.eval.ENodeCastException;
-import fr.obeo.dsl.common.tools.api.interpreter.IInterpreter;
-import fr.obeo.dsl.viewpoint.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
 
 /**

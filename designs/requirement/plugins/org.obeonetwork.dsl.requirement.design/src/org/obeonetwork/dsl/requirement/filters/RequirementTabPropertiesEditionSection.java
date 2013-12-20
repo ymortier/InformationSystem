@@ -3,9 +3,8 @@ package org.obeonetwork.dsl.requirement.filters;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.obeonetwork.dsl.requirement.Requirement;
-
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
 	
 public class RequirementTabPropertiesEditionSection implements IFilter {
 

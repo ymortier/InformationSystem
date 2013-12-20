@@ -13,9 +13,8 @@ package org.obeonetwork.graal.design.ui.eef;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.obeonetwork.graal.UserStory;
-
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
 
 public class UserStoryTabPropertiesEditionSection implements IFilter {
 

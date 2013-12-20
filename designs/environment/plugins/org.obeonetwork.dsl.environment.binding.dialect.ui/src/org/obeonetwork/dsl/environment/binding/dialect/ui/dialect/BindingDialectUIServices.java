@@ -28,6 +28,18 @@ import org.eclipse.emf.edit.tree.provider.TreeItemProviderAdapterFactory;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationCommand;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
+import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -40,19 +52,6 @@ import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditor
 import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionFactory;
 import org.obeonetwork.dsl.environment.bindingdialect.description.provider.DescriptionItemProviderAdapterFactory;
 import org.obeonetwork.dsl.environment.bindingdialect.provider.BindingdialectItemProviderAdapterFactory;
-
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.DRepresentationElement;
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.dialect.command.RefreshRepresentationCommand;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.description.DescriptionPackage;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditor;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.ExportFormat;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
 
 /**
  * @author sthibaudeau

@@ -18,12 +18,11 @@ import java.util.List;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage;
-
-import fr.obeo.dsl.viewpoint.editor.editorPlugin.ViewpointEditor;
-import fr.obeo.dsl.viewpoint.editor.properties.sections.common.AbstractComboPropertySection;
 
 /**
  * @author sthibaudeau
@@ -109,6 +108,6 @@ public class DBindingEditorCreationDescriptionDescriptionPropertySection extends
 	     */
 	    public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
 	        super.createControls(parent, tabbedPropertySheetPage);
-	        nameLabel.setFont(ViewpointEditor.getFontRegistry().get("required"));
+	        nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 	    }
 }

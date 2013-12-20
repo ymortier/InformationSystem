@@ -1,13 +1,12 @@
 package org.obeonetwork.dsl.statemachine.design.ui.extension;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.ui.tools.internal.views.ViewHelperImpl;
+import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.IContextMenuActionProvider;
+import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.ISessionViewExtension;
 import org.obeonetwork.dsl.statemachine.design.ui.extension.providers.StateMachineAnalysisContextMenuActionProvider;
 import org.obeonetwork.dsl.statemachine.design.ui.extension.providers.StateMachineAnalysisTreeProvider;
-
-import fr.obeo.dsl.viewpoint.ui.tools.api.views.ViewHelper;
-import fr.obeo.dsl.viewpoint.ui.tools.internal.views.ViewHelperImpl;
-import fr.obeo.dsl.viewpoint.ui.tools.internal.views.sessionview.extension.IContextMenuActionProvider;
-import fr.obeo.dsl.viewpoint.ui.tools.internal.views.sessionview.extension.ISessionViewExtension;
 
 public class StateMachineSessionExtension {
 

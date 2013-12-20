@@ -24,16 +24,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
 import org.obeonetwork.dsl.environment.bindingdialect.BindingdialectPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge;
 import org.obeonetwork.dsl.environment.bindingdialect.DBindingEditor;
 import org.obeonetwork.dsl.environment.bindingdialect.DBoundElement;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorDescription;
-
-import fr.obeo.dsl.viewpoint.DRepresentationElement;
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.ViewpointPackage;
-import fr.obeo.dsl.viewpoint.impl.DRepresentationImpl;
 
 /**
  * <!-- begin-user-doc -->

@@ -3,9 +3,8 @@ package org.obeonetwork.dsl.environment.binding.dialect.ui.treemapper.commands;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import fr.obeo.dsl.viewpoint.ViewpointPlugin;
-import fr.obeo.mda.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 public class UpdateMappingExpressionCommand extends RecordingCommand {
 
@@ -28,7 +27,7 @@ public class UpdateMappingExpressionCommand extends RecordingCommand {
 		try {
 			accessor.eSet(element, "bindingExpression", expression);
 		} catch (Exception e) {
-			ViewpointPlugin.getDefault().error("Error while modifying model", e);
+			SiriusPlugin.getDefault().error("Error while modifying model", e);
 		}
 	}
 

@@ -23,13 +23,29 @@ import org.obeonetwork.dsl.cinematic.CinematicRoot;
 import org.obeonetwork.dsl.cinematic.toolkits.Toolkit;
 import org.obeonetwork.dsl.cinematic.toolkits.util.ToolkitsProvider;
 
-
 public class CinematicToolkitsServices {
 
-	public static Collection<Toolkit> getCinematicProvidedToolkits(EObject context, Collection<Toolkit> alreadyUsedToolkits) {
+	public static Collection<Toolkit> getCinematicProvidedToolkits(
+			EObject context, EObject semanticElement) {		
+
+		Collection<Toolkit> alreadyUsedToolkits = null;
+
+		if (semanticElement instanceof CinematicRoot) {
+			CinematicRoot cinematicRoot = (CinematicRoot) semanticElement;
+			alreadyUsedToolkits = cinematicRoot.getToolkits();
+		} else {
+			EObject element = semanticElement;
+			while (!(element.eContainer() instanceof CinematicRoot)) {
+				element = semanticElement.eContainer();
+			}
+			CinematicRoot cinematicRoot = (CinematicRoot) element
+					.eContainer();
+			alreadyUsedToolkits = cinematicRoot.getToolkits();
+		}
+				
 		Collection<Toolkit> toolkits = new ArrayList<Toolkit>();
 		Collection<URI> toolkitsURI = new ArrayList<URI>();
-		
+
 		// Get toolkits in ResourceSet
 		Collection<Toolkit> toolkitsInResourceSet = getToolkitsInResourceSet(context);
 		for (Toolkit toolkitInResourceSet : toolkitsInResourceSet) {
@@ -39,37 +55,39 @@ public class CinematicToolkitsServices {
 				toolkitsURI.add(EcoreUtil.getURI(toolkitInResourceSet));
 			}
 		}
-		
+
 		// Get the already used toolkits URI which should not be proposed
 		Collection<URI> alreadyUsedToolkitsURIs = new ArrayList<URI>();
 		for (Toolkit usedToolkit : alreadyUsedToolkits) {
 			alreadyUsedToolkitsURIs.add(EcoreUtil.getURI(usedToolkit));
 		}
-		
+
 		// Get toolkits provided using the extension point
-		Collection<URI> providedToolkitsURI = ToolkitsProvider.getProvidedToolkits();
+		Collection<URI> providedToolkitsURI = ToolkitsProvider
+				.getProvidedToolkits();
 		for (URI uri : providedToolkitsURI) {
 			ResourceSet set = new ResourceSetImpl();
 			Resource resource = set.getResource(uri, true);
 			if (resource != null && resource.getContents() != null) {
 				for (EObject root : resource.getContents()) {
 					if (root instanceof Toolkit) {
-						Toolkit toolkit = (Toolkit)root;
+						Toolkit toolkit = (Toolkit) root;
 						URI toolkitURI = EcoreUtil.getURI(toolkit);
-						if (!toolkitsURI.contains(toolkitURI) && !alreadyUsedToolkitsURIs.contains(toolkitURI)) {
+						if (!toolkitsURI.contains(toolkitURI)
+								&& !alreadyUsedToolkitsURIs
+										.contains(toolkitURI)) {
 							toolkits.add(toolkit);
 						}
 					}
 				}
 			}
 		}
-		
+
 		// Get toolkits in ResourceSet
-		
-		
+
 		return toolkits;
 	}
-	
+
 	private static Collection<Toolkit> getToolkitsInResourceSet(EObject context) {
 		Collection<Toolkit> toolkits = new ArrayList<Toolkit>();
 		// Get ResourceSet
@@ -79,7 +97,7 @@ public class CinematicToolkitsServices {
 				for (Resource resource : set.getResources()) {
 					for (EObject object : resource.getContents()) {
 						if (object instanceof Toolkit) {
-							toolkits.add((Toolkit)object);
+							toolkits.add((Toolkit) object);
 						}
 					}
 				}
@@ -87,21 +105,35 @@ public class CinematicToolkitsServices {
 		}
 		return toolkits;
 	}
-	
-	public static CinematicRoot associateToolkit(CinematicRoot root, Toolkit toolkit) {
-		URI toolkitUri = EcoreUtil.getURI(toolkit);
-		// Check if it's already associated
-		for (Toolkit usedToolkit : root.getToolkits()) {
-			if (EcoreUtil.getURI(usedToolkit).equals(toolkitUri)) {
-				// already associated, do nothing and just return
-				return root;
+
+	public static CinematicRoot associateToolkit(EObject semanticElement,
+			Collection<Toolkit> toolkits) {
+		CinematicRoot root = null;
+		if (semanticElement instanceof CinematicRoot) {
+			root = (CinematicRoot) semanticElement;
+		} else {
+			EObject element = semanticElement;
+			while (!(element.eContainer() instanceof CinematicRoot)) {
+				element = semanticElement.eContainer();
 			}
+			root = (CinematicRoot) element.eContainer();
 		}
-		// We now have to associate the toolkit to the root object
-		ResourceSet set = root.eResource().getResourceSet();
-		EObject newToolkit = set.getEObject(toolkitUri, true);
-		if (newToolkit instanceof Toolkit) {
-			root.getToolkits().add((Toolkit)newToolkit);
+
+		for (Toolkit toolkit : toolkits) {
+			URI toolkitUri = EcoreUtil.getURI(toolkit);
+			// Check if it's already associated
+			for (Toolkit usedToolkit : root.getToolkits()) {
+				if (EcoreUtil.getURI(usedToolkit).equals(toolkitUri)) {
+					// already associated, do nothing and just return
+					return root;
+				}
+			}
+			// We now have to associate the toolkit to the root object
+			ResourceSet set = root.eResource().getResourceSet();
+			EObject newToolkit = set.getEObject(toolkitUri, true);
+			if (newToolkit instanceof Toolkit) {
+				root.getToolkits().add((Toolkit) newToolkit);
+			}
 		}
 		return root;
 	}

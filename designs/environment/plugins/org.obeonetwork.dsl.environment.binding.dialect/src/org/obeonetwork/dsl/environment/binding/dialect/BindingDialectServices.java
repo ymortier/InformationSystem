@@ -13,15 +13,14 @@ package org.obeonetwork.dsl.environment.binding.dialect;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.obeonetwork.dsl.environment.bindingdialect.BindingdialectFactory;
 import org.obeonetwork.dsl.environment.bindingdialect.DBindingEditor;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorDescription;
-
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.AbstractRepresentationDialectServices;
-import fr.obeo.dsl.viewpoint.business.api.dialect.description.IInterpretedExpressionQuery;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
 
 /**
  * Class to provide Binding dialect services

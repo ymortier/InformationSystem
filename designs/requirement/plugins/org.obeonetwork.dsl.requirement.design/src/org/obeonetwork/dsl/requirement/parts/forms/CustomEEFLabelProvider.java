@@ -14,9 +14,8 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.swt.graphics.Image;
-
-import fr.obeo.dsl.viewpoint.table.metamodel.table.DLine;
 
 /**
  * Custom class used to provide the right label and image when plugging EEF properties views on a Viewpoint table

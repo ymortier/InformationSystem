@@ -21,16 +21,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.obeonetwork.dsl.environment.Environment;
 import org.obeonetwork.dsl.is.design.service.ProvidedModelsService;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.tools.api.command.semantic.AddSemanticResourceCommand;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
 
 public class ImportEnvironmentModelHandler extends AbstractHandler {
 

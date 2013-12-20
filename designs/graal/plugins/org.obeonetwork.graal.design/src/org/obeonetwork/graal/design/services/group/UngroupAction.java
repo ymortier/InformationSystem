@@ -14,13 +14,12 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.obeonetwork.graal.AbstractTask;
 import org.obeonetwork.graal.TasksContainer;
 import org.obeonetwork.graal.TasksGroup;
 import org.obeonetwork.graal.UseCase;
-
-import fr.obeo.dsl.viewpoint.AbstractDNode;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
 
 /**
  * Class used to ungroup a group i.e. extract all the tasks in a group and remove the group

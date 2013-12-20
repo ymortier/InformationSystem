@@ -17,8 +17,7 @@ import org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.CreateEditPoliciesOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
 import org.eclipse.gmf.runtime.notation.Node;
-
-import fr.obeo.dsl.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  *  

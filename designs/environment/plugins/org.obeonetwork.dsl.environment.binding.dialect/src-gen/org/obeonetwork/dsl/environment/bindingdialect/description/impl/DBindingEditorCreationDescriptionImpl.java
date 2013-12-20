@@ -24,13 +24,12 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorCreationDescription;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorDescription;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage;
-
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.description.RepresentationElementMapping;
-import fr.obeo.dsl.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -200,7 +199,7 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 			final EObject eReferencer = setting.getEObject();
 			final EStructuralFeature eFeature = setting.getEStructuralFeature();
 			if (eReferencer instanceof RepresentationElementMapping
-					&& eFeature.equals(fr.obeo.dsl.viewpoint.description.DescriptionPackage.eINSTANCE
+					&& eFeature.equals(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE
 							.getRepresentationElementMapping_DetailDescriptions())) {
 				mappings.add((RepresentationElementMapping)eReferencer);
 			}

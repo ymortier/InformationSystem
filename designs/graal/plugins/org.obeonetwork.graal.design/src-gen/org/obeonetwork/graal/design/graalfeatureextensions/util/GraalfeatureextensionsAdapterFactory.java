@@ -6,16 +6,13 @@
  */
 package org.obeonetwork.graal.design.graalfeatureextensions.util;
 
-import fr.obeo.dsl.viewpoint.DFeatureExtension;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.obeonetwork.graal.design.graalfeatureextensions.*;
+import org.eclipse.sirius.viewpoint.DFeatureExtension;
+import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsPackage;
+import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
 
 /**
  * <!-- begin-user-doc -->

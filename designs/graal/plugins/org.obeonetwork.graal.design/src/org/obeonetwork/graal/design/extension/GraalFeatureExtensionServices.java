@@ -11,11 +11,10 @@
 package org.obeonetwork.graal.design.extension;
 
 
+import org.eclipse.sirius.business.api.featureextensions.AbstractFeatureExtensionServices;
+import org.eclipse.sirius.viewpoint.DFeatureExtension;
+import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
-
-import fr.obeo.dsl.viewpoint.DFeatureExtension;
-import fr.obeo.dsl.viewpoint.business.api.featureextensions.AbstractFeatureExtensionServices;
-import fr.obeo.dsl.viewpoint.description.FeatureExtensionDescription;
 
 /**
  * Feature extension services used to set the EClass to be saved within the aird resource

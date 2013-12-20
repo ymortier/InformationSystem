@@ -11,10 +11,9 @@
 package org.obeonetwork.dsl.environment.bindingdialect;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorDescription;
-
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
 
 /**
  * <!-- begin-user-doc -->

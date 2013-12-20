@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.obeonetwork.graal.design.extension;
 
-import fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtension;
-import fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtensionServices;
+import org.eclipse.sirius.business.api.featureextensions.FeatureExtension;
+import org.eclipse.sirius.business.api.featureextensions.FeatureExtensionServices;
 
 /**
  * Graal feature extension used to store UI preferences in the aird resource

@@ -12,9 +12,8 @@ package org.obeonetwork.graal.design.ui.eef;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.obeonetwork.graal.parts.forms.UserStoryPropertiesEditionPartForm;
-
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
 
 
 

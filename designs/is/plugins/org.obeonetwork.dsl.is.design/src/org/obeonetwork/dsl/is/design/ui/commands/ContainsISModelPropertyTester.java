@@ -15,12 +15,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.obeonetwork.dsl.environment.ObeoDSMObject;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
 
 public class ContainsISModelPropertyTester extends PropertyTester {
 

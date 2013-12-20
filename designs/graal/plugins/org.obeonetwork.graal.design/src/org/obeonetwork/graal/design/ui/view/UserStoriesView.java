@@ -22,6 +22,9 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
@@ -38,10 +41,6 @@ import org.obeonetwork.graal.design.ui.view.util.UserStoriesCheckStateProvider;
 import org.obeonetwork.graal.design.ui.view.util.UserStoriesContentProvider;
 import org.obeonetwork.graal.design.ui.view.util.UserStoryLabelProvider;
 import org.obeonetwork.graal.design.ui.view.util.ViewpointMultiSelectionListener;
-
-import fr.obeo.dsl.viewpoint.DAnalysis;
-import fr.obeo.dsl.viewpoint.business.api.query.EObjectQuery;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
 
 
 

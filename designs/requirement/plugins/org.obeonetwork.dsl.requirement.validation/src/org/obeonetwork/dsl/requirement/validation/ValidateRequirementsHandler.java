@@ -30,6 +30,7 @@ import org.eclipse.emf.validation.model.IConstraintStatus;
 import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -38,8 +39,6 @@ import org.obeonetwork.dsl.requirement.Category;
 import org.obeonetwork.dsl.requirement.Repository;
 import org.obeonetwork.dsl.requirement.Requirement;
 import org.obeonetwork.dsl.requirement.presentation.RequirementEditor;
-
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
 
 
 public class ValidateRequirementsHandler extends AbstractHandler {

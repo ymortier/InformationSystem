@@ -6,11 +6,9 @@
  */
 package org.obeonetwork.graal.design.graalfeatureextensions;
 
-import fr.obeo.dsl.viewpoint.DAnalysis;
-import fr.obeo.dsl.viewpoint.DFeatureExtension;
-
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.obeonetwork.graal.UserStory;
 
 /**

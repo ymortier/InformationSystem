@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.environment.binding.dialect;
 
-import fr.obeo.dsl.viewpoint.business.api.dialect.Dialect;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices;
+import org.eclipse.sirius.business.api.dialect.Dialect;
+import org.eclipse.sirius.business.api.dialect.DialectServices;
 
 /**
  * Extension to provide Binding dialect
