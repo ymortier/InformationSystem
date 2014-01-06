@@ -12,20 +12,22 @@ package org.obeonetwork.dsl.cinematic.design.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.obeonetwork.dsl.cinematic.AbstractPackage;
+import org.obeonetwork.dsl.cinematic.CinematicRoot;
 import org.obeonetwork.dsl.cinematic.NamedElement;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 
 public class CinematicEcoreServices {
 	
-	public static Collection<EObject> getAllRootsForCinematic(EObject any) {
-		Collection<EObject> roots = new ArrayList<EObject>();
+	public static List<EObject> getAllRootsForCinematic(EObject any) {
+		List<EObject> roots = new ArrayList<EObject>();
 		
 		Session session = SessionManager.INSTANCE.getSession(any);
 		
@@ -53,4 +55,25 @@ public class CinematicEcoreServices {
 		
 		return clone;
 	}
+	
+	/**
+	 * Retrieve the cinematic root.
+	 * @param context the context
+	 * @param semanticElement the semantic element 
+	 * @return cinematic root
+	 */
+	public CinematicRoot getCinematicRoot(EObject context, AbstractPackage semanticElement){
+	CinematicRoot cinematicRoot = null;
+		if (semanticElement instanceof CinematicRoot) {
+			cinematicRoot = (CinematicRoot) semanticElement;
+		} else {
+			EObject element = semanticElement;
+			while (!(element.eContainer() instanceof CinematicRoot)) {
+				element = semanticElement.eContainer();
+			}
+			cinematicRoot = (CinematicRoot) element.eContainer();
+		}
+		return cinematicRoot;
+	}
+		
 }

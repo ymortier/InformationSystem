@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -119,4 +120,24 @@ public class FlowsUtil {
 		}
 		return flows;
 	}
+	
+	public List<ViewContainer> getViewContainersPossible(EObject context, List<ViewContainer> viewContainers){
+		List<ViewContainer> viewContainersAncestors = viewContainers;
+		// Add to the list, the ViewContainer Ancestors if they are not already on the list.
+		for (ViewContainer viewContainer : viewContainers) {
+			EObject objectContainer = viewContainer.eContainer();
+			while (objectContainer.eContainer() != null) {
+				if (objectContainer instanceof ViewContainer && !viewContainersAncestors.contains(objectContainer)) {
+					viewContainersAncestors
+							.add((ViewContainer) objectContainer);
+				}
+				objectContainer = objectContainer.eContainer();
+			}
+		}
+		// Removing duplicates, if duplicates are present
+		Set<ViewContainer> set = new HashSet<ViewContainer>() ;
+        set.addAll(viewContainersAncestors) ;
+        return new ArrayList<ViewContainer>(set) ;
+	}
+	 
 }

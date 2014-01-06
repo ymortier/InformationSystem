@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.cinematic.design.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -21,12 +22,13 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.obeonetwork.dsl.cinematic.CinematicRoot;
 import org.obeonetwork.dsl.cinematic.toolkits.Toolkit;
+import org.obeonetwork.dsl.cinematic.toolkits.Widget;
 import org.obeonetwork.dsl.cinematic.toolkits.util.ToolkitsProvider;
 
 public class CinematicToolkitsServices {
 
 	public static Collection<Toolkit> getCinematicProvidedToolkits(
-			EObject context, EObject semanticElement) {		
+			EObject context, EObject semanticElement) {
 
 		Collection<Toolkit> alreadyUsedToolkits = null;
 
@@ -38,11 +40,10 @@ public class CinematicToolkitsServices {
 			while (!(element.eContainer() instanceof CinematicRoot)) {
 				element = semanticElement.eContainer();
 			}
-			CinematicRoot cinematicRoot = (CinematicRoot) element
-					.eContainer();
+			CinematicRoot cinematicRoot = (CinematicRoot) element.eContainer();
 			alreadyUsedToolkits = cinematicRoot.getToolkits();
 		}
-				
+
 		Collection<Toolkit> toolkits = new ArrayList<Toolkit>();
 		Collection<URI> toolkitsURI = new ArrayList<URI>();
 
@@ -136,5 +137,28 @@ public class CinematicToolkitsServices {
 			}
 		}
 		return root;
+	}
+
+	/**
+	 * Retrieve the list of toolkits and their widgets * @param context context
+	 * 
+	 * @param widgets
+	 *            the list of widgets that have the property isContainer set to
+	 *            true
+	 * @return list of toolkits and their widgets
+	 */
+	public List<EObject> getToolkitsFromWidget(EObject context,
+			List<Widget> widgets) {
+		List<Toolkit> toolkits = new ArrayList<Toolkit>();
+		List<EObject> toolkitsAndWidgest = new ArrayList<EObject>();
+		// Adds the associates toolkit to widget
+		for (Widget widget : widgets) {
+			if (!toolkits.contains(widget.getToolkit())) {
+				toolkits.add(widget.getToolkit());
+			}
+		}
+		toolkitsAndWidgest.addAll(toolkits);
+		toolkitsAndWidgest.addAll(widgets);
+		return toolkitsAndWidgest;
 	}
 }
