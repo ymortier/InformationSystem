@@ -134,11 +134,7 @@ public class FlowsUtil {
 		for (ViewContainer viewContainer : viewContainers) {
 			viewContainersAncestors.add(viewContainer);
 			EObject objectContainer = viewContainer.eContainer();
-			if (objectContainer != null
-					&& !viewContainersAncestors.contains(objectContainer)) {
-				viewContainersAncestors.add(objectContainer);
-			}
-			while (objectContainer.eContainer() != null) {
+			while (objectContainer != null) {
 				if (!viewContainersAncestors.contains(objectContainer)) {
 					viewContainersAncestors.add(objectContainer);
 				}

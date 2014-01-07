@@ -163,7 +163,7 @@
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="allFlows" computationExpression="[container.oclAsType(cinematic::flow::Flow).getAllRootsForCinematic().eAllContents(cinematic::flow::Flow)/]"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getFlowsAndContainer(allFlows)"/>
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedFlow" candidatesExpression="[allCandidates->asOrderedSet()->asSequence()/]" tree="true" rootExpression="[allCandidates->asOrderedSet()->asSequence()->select(eContainer().oclIsUndefined() or (not allCandidates->includes(self.eContainer())))/]" childrenExpression="[oclAsType(cinematic::AbstractPackage).subPackages->union(oclAsType(cinematic::AbstractPackage).flows)/]" message="Select an existing Flow"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedFlow" candidatesExpression="[allCandidates->asOrderedSet()->asSequence()/]" tree="true" rootExpression="[allCandidates->asOrderedSet()->asSequence()->select(eContainer().oclIsUndefined() or (not allCandidates->includes(eContainer())))/]" childrenExpression="[oclAsType(cinematic::AbstractPackage).subPackages->union(oclAsType(cinematic::AbstractPackage).flows)/]" message="Select an existing Flow"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -386,7 +386,7 @@
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="allContainers" computationExpression="[container.oclAsType(cinematic::flow::ViewState).getAllRootsForCinematic()->collect(eAllContents(cinematic::view::ViewContainer))/]"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getViewContainersPossible(allContainers)"/>
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(self.eContainer())))/]" childrenExpression="feature:eContents" message="Select a view container to bind with the view state"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(eContainer())))/]" childrenExpression="feature:eContents" message="Select a view container to bind with the view state"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -648,6 +648,7 @@
       <metamodel href="platform:/plugin/org.obeonetwork.dsl.cinematic/model/cinematic.ecore#//view"/>
       <metamodel href="platform:/plugin/org.obeonetwork.dsl.cinematic/model/cinematic.ecore#//flow"/>
       <metamodel href="platform:/plugin/org.obeonetwork.dsl.cinematic/model/cinematic.ecore#//toolkits"/>
+      <metamodel href="http://www.obeonetwork.org/dsl/entity/2.0.0#/"/>
       <subItemMappings name="UIS_Package" domainClass="cinematic.AbstractPackage" semanticCandidatesExpression="var:self">
         <defaultStyle labelSize="9">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -778,7 +779,7 @@
               <variables name="element" documentation="The semantic currently edited element.">
                 <subVariables xsi:type="tool:AcceleoVariable" name="allContainers" computationExpression="[container.getAllRootsForCinematic().eAllContents(cinematic::view::ViewContainer)/]"/>
                 <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getViewContainersPossible(allContainers)"/>
-                <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(self.eContainer())))/]" childrenExpression="feature:eContents" message="Select a view container to reference"/>
+                <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(eContainer())))/]" childrenExpression="feature:eContents" message="Select a view container to reference"/>
               </variables>
               <variables name="container" documentation="The semantic element corresponding to the view container."/>
             </create>
@@ -810,9 +811,9 @@
               <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.createCinematicBindingInfo($selectedElement)%>"/>
               <variables name="root" documentation="The semantic element of the tree."/>
               <variables name="element" documentation="The semantic currently edited element.">
-                <subVariables xsi:type="tool:AcceleoVariable" name="allBoundableElements" computationExpression="&lt;%$container.getAllRootsForCinematic().eAllContents[filter(&quot;environment.DTO&quot;) || filter(&quot;environment.Property&quot;) || filter(&quot;entity.Entity&quot;) || filter(&quot;entity.Property&quot;)]%>"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="&lt;%($allBoundableElements + $allBoundableElements.ancestor).nMinimize%>"/>
-                <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="&lt;%$allCandidates%>" tree="true" rootExpression="&lt;%$allCandidates[eContainer == null || $allCandidates.nContains(eContainer)  == false]%>" childrenExpression="&lt;%eContents%>" message="Select an element to bind"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="allBoundableElements" computationExpression="[container.getAllRootsForCinematic().eAllContents()->select(oclIsKindOf(environment::DTO) or oclIsKindOf(environment::Property) or oclIsKindOf(entity::Entity) or oclIsKindOf(entity::Property))/]"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getBindingElementsAndContainers(allBoundableElements)"/>
+                <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(eContainer())))/]" childrenExpression="feature:eContents" message="Select an element to bind"/>
               </variables>
               <variables name="container" documentation="The semantic element corresponding to the view container."/>
             </create>
@@ -1052,7 +1053,7 @@
             <variables name="element" documentation="The semantic currently edited element.">
               <subVariables xsi:type="tool:AcceleoVariable" name="allContainers" computationExpression="[container.getAllRootsForCinematic().eAllContents(cinematic::view::ViewContainer)/]"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getViewContainersPossible(allContainers)"/>
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(self.eContainer())))/]" childrenExpression="feature:eContents" message="Select a view container to reference"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(eContainer())))/]" childrenExpression="feature:eContents" message="Select a view container to reference"/>
             </variables>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
           </create>
@@ -1081,12 +1082,12 @@
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
           </create>
           <create name="CRE_DataBinding" label="Data Binding" forceRefresh="true" mapping="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='UI%20Structure']/@subItemMappings[name='UIS_Package']/@subItemMappings[name='UIS_ViewContainer']/@subItemMappings[name='UIS_DataBinding']">
-            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.createCinematicBindingInfo($selectedElement)%>"/>
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="service:element.createCinematicBindingInfo(selectedElement)"/>
             <variables name="root" documentation="The semantic element of the tree."/>
             <variables name="element" documentation="The semantic currently edited element.">
-              <subVariables xsi:type="tool:AcceleoVariable" name="allBoundableElements" computationExpression="&lt;%$container.getAllRootsForCinematic().eAllContents[filter(&quot;environment.DTO&quot;) || filter(&quot;environment.Property&quot;) || filter(&quot;entity.Entity&quot;) || filter(&quot;entity.Property&quot;)]%>"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="&lt;%($allBoundableElements + $allBoundableElements.ancestor).nMinimize%>"/>
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="&lt;%$allCandidates%>" tree="true" rootExpression="&lt;%$allCandidates[eContainer == null || $allCandidates.nContains(eContainer)  == false]%>" childrenExpression="&lt;%eContents%>" message="Select an element to bind"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="allBoundableElements" computationExpression="[container.getAllRootsForCinematic().eAllContents()->select(oclIsKindOf(environment::DTO) or oclIsKindOf(environment::Property) or oclIsKindOf(entity::Entity) or oclIsKindOf(entity::Property))/]"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getBindingElementsAndContainers(allBoundableElements)"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(eContainer())))/]" childrenExpression="feature:eContents" message="Select an element to bind"/>
             </variables>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
           </create>
