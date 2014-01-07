@@ -31,10 +31,10 @@ import org.obeonetwork.dsl.cinematic.view.AbstractViewElement;
 import org.obeonetwork.dsl.cinematic.view.ViewContainer;
 
 public class FlowsUtil {
-	
+
 	public static Collection<Event> getAssociatedEvents(Flow flow) {
 		Collection<Event> events = new HashSet<Event>();
-		
+
 		events.addAll(flow.getEvents());
 		for (Flow subflow : getSubflows(flow)) {
 			events.addAll(subflow.getEvents());
@@ -42,55 +42,59 @@ public class FlowsUtil {
 		for (AbstractViewElement element : getAssociatedAbstractViewElements(flow)) {
 			events.addAll(element.getEvents());
 		}
-		
+
 		return events;
 	}
-	
-	public static Collection<WidgetEventTypeAndAbstractViewElement> getPossibleWidgetEvents(Flow flow) {
+
+	public static Collection<WidgetEventTypeAndAbstractViewElement> getPossibleWidgetEvents(
+			Flow flow) {
 		Collection<WidgetEventTypeAndAbstractViewElement> eventTypes = new HashSet<WidgetEventTypeAndAbstractViewElement>();
-		
+
 		for (AbstractViewElement element : getAssociatedAbstractViewElements(flow)) {
 			if (element.getWidget() != null) {
-				for (WidgetEventType widgetEventType : element.getWidget().getPossibleEvents()) {					
-					eventTypes.add(new WidgetEventTypeAndAbstractViewElement(widgetEventType, element));
+				for (WidgetEventType widgetEventType : element.getWidget()
+						.getPossibleEvents()) {
+					eventTypes.add(new WidgetEventTypeAndAbstractViewElement(
+							widgetEventType, element));
 				}
 			}
 		}
-		
+
 		return eventTypes;
 	}
-	
-	public static Collection<AbstractViewElement> getAssociatedAbstractViewElements(Flow flow) {
+
+	public static Collection<AbstractViewElement> getAssociatedAbstractViewElements(
+			Flow flow) {
 		Collection<AbstractViewElement> elements = new HashSet<AbstractViewElement>();
-		
+
 		// The associated view elements are those contained or referenced
 		// via referenced view containers
 		for (ViewState viewState : getViewStates(flow)) {
 			elements.addAll(viewState.getViewContainers());
 			for (ViewContainer viewContainer : viewState.getViewContainers()) {
-				elements.addAll(ViewUtil.getAssociatedAbstractViewElements(viewContainer));
+				elements.addAll(ViewUtil
+						.getAssociatedAbstractViewElements(viewContainer));
 			}
 		}
-		
+
 		return elements;
 	}
-	
-	
+
 	public static Collection<ViewState> getViewStates(Flow flow) {
 		Collection<ViewState> viewStates = new ArrayList<ViewState>();
 		for (FlowState state : flow.getStates()) {
 			if (state instanceof ViewState) {
-				viewStates.add((ViewState)state);
+				viewStates.add((ViewState) state);
 			}
 		}
 		return viewStates;
 	}
-	
+
 	public static Collection<Flow> getSubflows(Flow flow) {
 		Collection<Flow> flows = new ArrayList<Flow>();
 		for (FlowState state : flow.getStates()) {
 			if (state instanceof SubflowState) {
-				Flow subflow = ((SubflowState)state).getSubflow();
+				Flow subflow = ((SubflowState) state).getSubflow();
 				if (subflow != null) {
 					flows.add(subflow);
 				}
@@ -98,15 +102,16 @@ public class FlowsUtil {
 		}
 		return flows;
 	}
-	
+
 	public static List<Flow> getFlowsWithName(EObject context, String name) {
 		List<Flow> flows = new ArrayList<Flow>();
 		if (name == null || name.trim().equals("")) {
 			return flows;
 		}
-		Collection<EObject> roots = CinematicEcoreServices.getAllRootsForCinematic(context);
+		Collection<EObject> roots = CinematicEcoreServices
+				.getAllRootsForCinematic(context);
 		for (EObject root : roots) {
-			for(TreeIterator<EObject> it = root.eAllContents(); it.hasNext();) {
+			for (TreeIterator<EObject> it = root.eAllContents(); it.hasNext();) {
 				EObject current = it.next();
 				if (current instanceof Flow) {
 					Flow flow = (Flow) current;
@@ -120,24 +125,40 @@ public class FlowsUtil {
 		}
 		return flows;
 	}
-	
-	public List<ViewContainer> getViewContainersPossible(EObject context, List<ViewContainer> viewContainers){
-		List<ViewContainer> viewContainersAncestors = viewContainers;
-		// Add to the list, the ViewContainer Ancestors if they are not already on the list.
+
+	public List<EObject> getViewContainersPossible(EObject context,
+			List<ViewContainer> viewContainers) {
+		List<EObject> viewContainersAncestors = new ArrayList<EObject>();
+		// Add to the list, the ViewContainer Ancestors if they are not already
+		// on the list.
 		for (ViewContainer viewContainer : viewContainers) {
+			viewContainersAncestors.add(viewContainer);
 			EObject objectContainer = viewContainer.eContainer();
+			if (objectContainer != null
+					&& !viewContainersAncestors.contains(objectContainer)) {
+				viewContainersAncestors.add(objectContainer);
+			}
 			while (objectContainer.eContainer() != null) {
-				if (objectContainer instanceof ViewContainer && !viewContainersAncestors.contains(objectContainer)) {
-					viewContainersAncestors
-							.add((ViewContainer) objectContainer);
+				if (!viewContainersAncestors.contains(objectContainer)) {
+					viewContainersAncestors.add(objectContainer);
 				}
 				objectContainer = objectContainer.eContainer();
 			}
 		}
 		// Removing duplicates, if duplicates are present
-		Set<ViewContainer> set = new HashSet<ViewContainer>() ;
-        set.addAll(viewContainersAncestors) ;
-        return new ArrayList<ViewContainer>(set) ;
+		Set<EObject> set = new HashSet<EObject>();
+		set.addAll(viewContainersAncestors);
+		return new ArrayList<EObject>(set);
 	}
-	 
+
+	public List<EObject> getFlowsAndContainer(EObject context, List<Flow> flows) {
+		List<EObject> containers = new ArrayList<EObject>(flows);
+		for (Flow flow : flows) {
+			if (flow.eContainer() instanceof AbstractPackage) {
+				containers.add((AbstractPackage) flow.eContainer());
+			}
+		}
+		return containers;
+	}
+
 }

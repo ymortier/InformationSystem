@@ -161,16 +161,16 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CRE_ExistingFlowSubflowState" label="Existing flow" nodeMappings="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='Flow%20Diagram']/@defaultLayer/@nodeMappings[name='FLD_SubflowState']">
             <variable name="container">
-              <subVariables xsi:type="tool:AcceleoVariable" name="allFlows" computationExpression="[container.oclAsType(cinematic::flow::Flow).getAllRootsForCinematic()->eAllContents(cinematic::flow::Flow)/]"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="[allFlows/]"/>
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedFlow" candidatesExpression="[allCandidates->asOrderedSet()->asSequence()/]" tree="true" rootExpression="&lt;%$allCandidates.nMinimize[eContainer == null || $allCandidates.nContains(eContainer) == false]%>" childrenExpression="[oclAsType(cinematic::AbstractPackage).subPackages->union(oclAsType(cinematic::AbstractPackage).flows)/]" message="Select an existing Flow"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="allFlows" computationExpression="[container.oclAsType(cinematic::flow::Flow).getAllRootsForCinematic().eAllContents(cinematic::flow::Flow)/]"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getFlowsAndContainer(allFlows)"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedFlow" candidatesExpression="[allCandidates->asOrderedSet()->asSequence()/]" tree="true" rootExpression="[allCandidates->asOrderedSet()->asSequence()->select(eContainer().oclIsUndefined() or (not allCandidates->includes(self.eContainer())))/]" childrenExpression="[oclAsType(cinematic::AbstractPackage).subPackages->union(oclAsType(cinematic::AbstractPackage).flows)/]" message="Select an existing Flow"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selectedFlow != null%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[not selectedFlow.oclAsType(cinematic::flow::Flow).oclIsUndefined()/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="flow.SubflowState" referenceName="states">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="subflow" valueExpression="&lt;%$selectedFlow%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="subflow" valueExpression="var:selectedFlow"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -182,7 +182,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(cinematic::flow::Flow).eContainer()/]">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="flow.Flow" referenceName="flows" variableName="newFlow">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Flow' + oclAsType(cinematic::AbstractPackage).flows->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Flow' + eContainer(cinematic::AbstractPackage).flows->size()/]"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="flow.SubflowState" referenceName="states">
                       <subModelOperations xsi:type="tool:SetValue" featureName="subflow" valueExpression="var:newFlow"/>
@@ -282,7 +282,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="CRE_Subflow_Diagram" label="Flow Diagram" precondition="[not oclAsType(cinematic::flow::SubflowState).subflow.oclIsUndefined()/]" browseExpression="&lt;%subflow%>" diagramDescription="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='Flow%20Diagram']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="CRE_Subflow_Diagram" label="Flow Diagram" precondition="[not oclAsType(cinematic::flow::SubflowState).subflow.oclIsUndefined()/]" browseExpression="feature:subflow" diagramDescription="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='Flow%20Diagram']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
             </initialOperation>
@@ -472,7 +472,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="description_1:TreeCreationDescription" name="CRE_UI_Structure" label="UI Structure" browseExpression="&lt;%eContainer(&quot;cinematic.AbstractPackage&quot;)%>" treeDescription="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='UI%20Structure']">
+          <ownedTools xsi:type="description_1:TreeCreationDescription" name="CRE_UI_Structure" label="UI Structure" browseExpression="[eContainer(cinematic::AbstractPackage)/]" treeDescription="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='UI%20Structure']">
             <containerViewVariable/>
             <representationNameVariable/>
           </ownedTools>
@@ -596,7 +596,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="description_1:TreeCreationDescription" name="CRE_UI_Structure" label="UI Structure" browseExpression="&lt;%eContainer(&quot;cinematic.AbstractPackage&quot;)%>" treeDescription="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='UI%20Structure']">
+          <ownedTools xsi:type="description_1:TreeCreationDescription" name="CRE_UI_Structure" label="UI Structure" browseExpression="[eContainer(cinematic::AbstractPackage)/]" treeDescription="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='UI%20Structure']">
             <containerViewVariable/>
             <representationNameVariable/>
           </ownedTools>
@@ -776,7 +776,7 @@
               </firstModelOperation>
               <variables name="root" documentation="The semantic element of the tree."/>
               <variables name="element" documentation="The semantic currently edited element.">
-                <subVariables xsi:type="tool:AcceleoVariable" name="allContainers" computationExpression="[eContainer(cinematic::view::ViewContainer).getAllRootsForCinematic()->collect(eAllContents(cinematic::view::ViewContainer))/]"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="allContainers" computationExpression="[container.getAllRootsForCinematic().eAllContents(cinematic::view::ViewContainer)/]"/>
                 <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getViewContainersPossible(allContainers)"/>
                 <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(self.eContainer())))/]" childrenExpression="feature:eContents" message="Select a view container to reference"/>
               </variables>
@@ -1050,14 +1050,14 @@
             </firstModelOperation>
             <variables name="root" documentation="The semantic element of the tree."/>
             <variables name="element" documentation="The semantic currently edited element.">
-              <subVariables xsi:type="tool:AcceleoVariable" name="allContainers" computationExpression="[eContainer(cinematic::view::ViewContainer).getAllRootsForCinematic()->collect(eAllContents(cinematic::view::ViewContainer))/]"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="allContainers" computationExpression="[container.getAllRootsForCinematic().eAllContents(cinematic::view::ViewContainer)/]"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="allCandidates" computationExpression="service:getViewContainersPossible(allContainers)"/>
               <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="var:allCandidates" tree="true" rootExpression="[allCandidates->select(eContainer().oclIsUndefined() or (not allCandidates->includes(self.eContainer())))/]" childrenExpression="feature:eContents" message="Select a view container to reference"/>
             </variables>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
           </create>
           <create name="CRE_ViewEvent" label="Event" forceRefresh="true" mapping="//@ownedViewpoints[name='Cinematic%20Views']/@ownedRepresentations[name='UI%20Structure']/@subItemMappings[name='UIS_Package']/@subItemMappings[name='UIS_ViewContainer']/@subItemMappings[name='UIS_ViewEvent']">
-            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element%>">
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
               <subModelOperations xsi:type="tool:CreateInstance" typeName="view.ViewEvent" referenceName="events">
                 <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedEvent.oclAsType(cinematic::toolkits::WidgetEventType)/]"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[type.name/]"/>
