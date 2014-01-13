@@ -3,8 +3,7 @@ Bundle-Name: Cinematic Viewpoint
 Bundle-SymbolicName: org.obeonetwork.dsl.cinematic.design;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.cinematic.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.obeonetwork.dsl.cinematic,
  org.obeonetwork.dsl.cinematic.edit,
@@ -15,5 +14,5 @@ Require-Bundle: fr.obeo.acceleo.gen,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: www.obeo.fr
-Export-Package: org.obeonetwork.dsl.cinematic.design.services,org.obeonetwork.dsl.cinematic.design.services.label,org.obeonetwork.dsl.cinematic.design.services.util
+Export-Package: org.obeonetwork.dsl.cinematic.design.services,org.obeonetwork.dsl.cinematic.design.services.label
 Bundle-ManifestVersion: 2

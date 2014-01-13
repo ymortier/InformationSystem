@@ -3,8 +3,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.obeonetwork.dsl.is.design;singleton:=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.is.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.obeonetwork.dsl.cinematic;resolution:=optional,
  org.obeonetwork.dsl.entity;resolution:=optional,
