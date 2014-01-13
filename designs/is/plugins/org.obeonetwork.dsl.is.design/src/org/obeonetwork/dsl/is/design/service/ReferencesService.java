@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.obeonetwork.dsl.entity.Block;
 import org.obeonetwork.dsl.environment.Reference;
 
 public class ReferencesService {
@@ -59,7 +60,7 @@ public class ReferencesService {
 		return new ArrayList<org.obeonetwork.dsl.entity.Reference>(map.values());
 	}
 	
-	public void deleteEntityReferences(List<org.obeonetwork.dsl.entity.Reference> references) {
+	public void deleteEntityReferences(EObject context, List<org.obeonetwork.dsl.entity.Reference> references) {
 		for (org.obeonetwork.dsl.entity.Reference reference : references) {
 			EcoreUtil.delete(reference, true);
 		}
