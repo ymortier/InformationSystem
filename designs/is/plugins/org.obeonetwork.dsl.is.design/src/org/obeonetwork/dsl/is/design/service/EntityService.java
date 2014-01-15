@@ -166,7 +166,7 @@ public class EntityService {
 	
 	public List<Entity> allContainedEntities(Block context){
 		List<Entity> allContainedEntities = new ArrayList<Entity>();
-		for (EObject obj : eAllContents(context, Entity.class)){
+		for (EObject obj : EcoreService.eAllContents(context, Entity.class)){
 			allContainedEntities.add((Entity)obj);
 		}		
 		return allContainedEntities;
@@ -192,7 +192,7 @@ public class EntityService {
 		// For all roots retrieve all elements of type Entity
 		for (EObject object : allRoots){
 			List<Entity> allContainedEntities = new ArrayList<Entity>();
-			for (EObject obj : eAllContents(object, Entity.class)){
+			for (EObject obj : EcoreService.eAllContents(object, Entity.class)){
 				allContainedEntities.add((Entity)obj);
 			}		
 			entities.addAll(allContainedEntities);
@@ -207,7 +207,7 @@ public class EntityService {
 			allNonReferencedExternalEntities = allNonReferencedExternalEntities((Block)context);
 			List<AbstractDNode> allContainedNodes = new ArrayList<AbstractDNode>();
 			// Retrieve all Elements of type AbstractDNode
-			for (EObject obj : eAllContents(dDiagram, AbstractDNode.class)){
+			for (EObject obj : EcoreService.eAllContents(dDiagram, AbstractDNode.class)){
 				allContainedNodes.add((AbstractDNode)obj);
 			}					
 			// For all nodes, check if node.target is instanceof Entity
@@ -220,19 +220,6 @@ public class EntityService {
 						
 		}
 		return allNonReferencedExternalEntities;
-	}
-	
-	private List<EObject> eAllContents(EObject context, Class<?> typeClass){
-		List<EObject> allContainedElements = new ArrayList<EObject>();
-		TreeIterator<EObject> allContents = context.eAllContents();
-		Iterator<EObject> iter = allContents;
-		while (iter.hasNext()){
-			EObject iterNext = iter.next();						
-			if (typeClass.isAssignableFrom(iterNext.getClass()) && !allContainedElements.contains(iterNext)){				
-				allContainedElements.add(iterNext);
-			}
-		}
-		return allContainedElements;
-	}
+	}	
 	
 }

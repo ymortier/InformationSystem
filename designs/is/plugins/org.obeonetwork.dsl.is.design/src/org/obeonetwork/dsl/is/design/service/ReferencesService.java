@@ -66,7 +66,7 @@ public class ReferencesService {
 		}
 	}
 
-	public void deleteDtoReferences(List<Reference> references) {
+	public void deleteDtoReferences(EObject context, List<Reference> references) {
 		for (Reference reference : references) {
 			EcoreUtil.delete(reference, true);
 		}
