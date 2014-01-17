@@ -17,17 +17,23 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.sirius.viewpoint.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.obeonetwork.dsl.environment.DTO;
+import org.obeonetwork.dsl.environment.Reference;
+import org.obeonetwork.dsl.environment.Type;
+import org.obeonetwork.dsl.soa.Category;
 import org.obeonetwork.dsl.soa.Component;
 import org.obeonetwork.dsl.soa.InterfaceKind;
 import org.obeonetwork.dsl.soa.Service;
+import org.obeonetwork.dsl.soa.ServiceDTO;
 import org.obeonetwork.dsl.soa.System;
 import org.obeonetwork.dsl.soa.Wire;
 
 public class SOAService {
 
-	public List<Component> allNonReferencedExternalComponents(System context) {
+	public List<Component> allNonReferencedExternalComponents (System context) {
 		List<Component> allNonReferencedExternalComponents = allExternalComponents(context);
 		// Remove all referenced external components
 		allNonReferencedExternalComponents
@@ -68,7 +74,6 @@ public class SOAService {
 	}
 
 	public List<Component> allComponents(System context) {
-		// <%allRoots.eAllContents().filter("soa.Component")%>
 		EcoreService ecoreService = new EcoreService();
 		// Retrieve allRoots
 		Collection<EObject> allRoots = ecoreService.allRoots(context);
@@ -101,6 +106,117 @@ public class SOAService {
 		}
 		allNonReferencedExternalComponents.removeAll(allComponentToRemove);
 		return allNonReferencedExternalComponents;
+	}
+	
+	public List<Type> allSelectableExternalDTOs (Category context, DSemanticDiagram semanticDiagram){		
+		List<Type> allNonReferencedExternalDTOs = allNonReferencedExternalDTOs(context);
+		List<Type> allTypesToRemove = new ArrayList<Type>();
+		// For all semanticDiagram retrieve all contents elements of type
+		// "DNodeContainer"
+		for (EObject obj : EcoreService.eContents(semanticDiagram,
+				AbstractDNode.class)) {
+			// Retrieve and add the target of DNodeContainer type of Component
+			if (((AbstractDNode) obj).getTarget() instanceof ServiceDTO) {
+				allTypesToRemove.add((ServiceDTO) ((AbstractDNode) obj)
+						.getTarget());
+			}
+		}
+		allNonReferencedExternalDTOs.removeAll(allTypesToRemove);
+		return allNonReferencedExternalDTOs;
+	}
+	
+	public List<Type> allReferencedExternalDTOs (Category context){
+		List<Type> allReferencedExternalDTOs = allReferencedDTOs(context);
+		// Remove the DTO contained in the context
+		allReferencedExternalDTOs.removeAll(allContainedDTOs(context));
+		return allReferencedExternalDTOs;
+	}
+	
+	public List<Type> allReferencedDTOs (Category context){
+		//<%(allContainedDTOs.referencedDTOs).nMinimize()%>
+		List<Type> allContainedDTOs = allContainedDTOs(context);
+		List<Type> referencedDTOs = new ArrayList<Type>();
+		for (Type type : allContainedDTOs){
+			if (type instanceof ServiceDTO){
+				referencedDTOs.addAll(referencedDTOs((ServiceDTO)type));
+			}
+		}
+		Set<Type> allReferencedDTOs = new HashSet<Type>();
+		// Remove duplicates
+		allReferencedDTOs.addAll(referencedDTOs);
+		return new ArrayList<Type>(allReferencedDTOs);
+	}	
+	
+	public List<Type> referencedDTOs (ServiceDTO context){ 
+		List<Type> types = new ArrayList<Type>();
+		List<Reference> references = context.getOwnedReferences();
+		for (Reference ref : references){
+			// Add the type of Owned references
+			types.add(ref.getType());
+			for (EObject obj : ref.getType().eCrossReferences()){
+				if (obj instanceof Reference){
+					// add the EInverse of type.dto
+					types.add(((Reference)obj).getDto());
+				}
+			}
+		}
+		// Add the supertype
+		if (context.getSupertype() != null){
+	    types.add(context.getSupertype());
+	    for (EObject obj : context.getSupertype().eCrossReferences()){
+	    	if (obj instanceof DTO){
+	    		// Add the eInverse of supertype
+	    		types.add((DTO)obj);
+	    	}
+	    }
+		}
+	    Set<Type>referencedDTOs = new HashSet<Type>();
+	    // Remove duplicates
+	    referencedDTOs.addAll(types);
+	    return new ArrayList<Type>(referencedDTOs);
+		
+		
+	}
+	
+	public List<Type> allContainedDTOs (Category context){
+		List<Type> types = context.getTypes();
+		for (Category category : context.getOwnedCategories()){
+			types.addAll(category.getTypes());
+		}
+		Set<Type> containedDTOs = new HashSet<Type>();
+		// Remove duplicates
+		containedDTOs.addAll(types);
+		return new ArrayList<Type>(containedDTOs);
+	}
+	
+	public List<Type> allNonReferencedExternalDTOs (Category context){
+		List<Type> allExternalDTOs = allExternalDTOs(context);
+		allExternalDTOs.removeAll(allReferencedDTOs(context));
+		return allExternalDTOs;
+	}
+	
+	public List<Type> allExternalDTOs (Category context){
+		List<Type> allDTOs = allDTOs(context);
+		allDTOs.removeAll(allContainedDTOs(context));
+		return allDTOs;
+	}
+	
+	public List<Type> allDTOs (Category context){
+		//<%allRoots.eAllContents().filter("soa.ServiceDTO")%>
+		EcoreService ecoreService = new EcoreService();
+		// Retrieve allRoots
+		Collection<EObject> allRoots = ecoreService.allRoots(context);
+		List<Type> types = new ArrayList<Type>();
+		// For all roots retrieve all elements of type ServiceDTO
+		for (EObject object : allRoots) {
+			List<Type> allContainedServiceDTO = new ArrayList<Type>();
+			for (EObject obj : EcoreService.eAllContents(object,
+					ServiceDTO.class)) {
+				allContainedServiceDTO.add((Type) obj);
+			}
+			types.addAll(allContainedServiceDTO);
+		}
+		return types;
 	}
 	
 	public boolean isRequiredService (Service context){

@@ -76,6 +76,7 @@ public class UserStoriesView extends ViewPart {
 	 */
 	public void createPartControl(Composite parent) {
 		viewer = new CheckboxTreeViewer(parent, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
+		viewer.setUseHashlookup(true);
 		viewer.setContentProvider(new UserStoriesContentProvider());
 		viewer.setLabelProvider(new UserStoryLabelProvider(this, adapterFactory));
 		viewer.setCheckStateProvider(new UserStoriesCheckStateProvider(viewer));
