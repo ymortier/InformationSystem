@@ -3,8 +3,7 @@ Bundle-Name: Requirement viewpoint
 Bundle-SymbolicName: org.obeonetwork.dsl.requirement.design;singleton:=true
 Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.requirement.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.obeonetwork.dsl.requirement.edit,
  org.eclipse.sirius;bundle-version="0.9.0",

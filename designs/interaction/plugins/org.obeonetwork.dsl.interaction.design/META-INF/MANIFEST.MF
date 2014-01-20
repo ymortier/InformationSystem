@@ -3,8 +3,7 @@ Bundle-Name: Obeo Designer Viewpoint Project
 Bundle-SymbolicName: org.obeonetwork.dsl.interaction.design;singleton=true
 Bundle-Version: 2.4.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.interaction.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.obeonetwork.dsl.interaction,
  org.eclipse.core.resources,

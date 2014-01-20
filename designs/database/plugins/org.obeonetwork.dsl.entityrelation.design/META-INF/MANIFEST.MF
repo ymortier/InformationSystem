@@ -3,8 +3,7 @@ Bundle-Name: Entity Relation Designer
 Bundle-SymbolicName: org.obeonetwork.dsl.entityrelation.design;singleton=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.entityrelation.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.obeonetwork.dsl.entityrelation,
  org.obeonetwork.dsl.entityrelation.edit,
