@@ -2692,7 +2692,6 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DBindingEditorDescription" name="Binding Details" titleExpression="service:computeBindingEditorName()"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.is.design.soa.soa"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.is.design.service.SOAService"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.is.design.service.EcoreService"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.is.design.service.EnvironmentService"/>
