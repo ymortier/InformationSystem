@@ -3,8 +3,7 @@ Bundle-Name: Graal Viewpoint
 Bundle-SymbolicName: org.obeonetwork.graal.design;singleton:=true
 Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.obeonetwork.graal.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.eef.runtime;visibility:=reexport,
  org.obeonetwork.dsl.requirement,

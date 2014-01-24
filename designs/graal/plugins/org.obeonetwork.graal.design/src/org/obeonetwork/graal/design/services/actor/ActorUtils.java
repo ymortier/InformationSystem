@@ -43,7 +43,7 @@ public class ActorUtils {
 		return getVisibleLinksToActors(abstractTask, tasksOnDiagram, new HashMap<Task, Collection<Actor>>());
 	}
 	
-	public Collection<Actor> getVisibleLinksToActors(AbstractTask abstractTask, List<Task> tasksOnDiagram, Map<Task, Collection<Actor>> cache) {
+	private Collection<Actor> getVisibleLinksToActors(AbstractTask abstractTask, List<Task> tasksOnDiagram, Map<Task, Collection<Actor>> cache) {
 		if (abstractTask instanceof Task) {
 			return getVisibleLinksToActorsFromTask((Task)abstractTask, tasksOnDiagram, cache);
 		} else if (abstractTask instanceof TasksGroup) {
