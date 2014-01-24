@@ -17,7 +17,6 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.obeonetwork.dsl.entity.Block;
 import org.obeonetwork.dsl.environment.Reference;
 
 public class ReferencesService {
