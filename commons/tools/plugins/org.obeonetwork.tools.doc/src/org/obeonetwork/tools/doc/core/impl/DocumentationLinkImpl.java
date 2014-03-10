@@ -3,11 +3,18 @@
  */
 package org.obeonetwork.tools.doc.core.impl;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.obeonetwork.dsl.environment.Annotation;
 import org.obeonetwork.dsl.environment.EnvironmentFactory;
 import org.obeonetwork.dsl.environment.ObeoDSMObject;
 import org.obeonetwork.tools.doc.core.DocumentationLink;
+
+import com.google.common.base.Predicate;
 
 /**
  * @author <a href="goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -107,7 +114,17 @@ public class DocumentationLinkImpl implements DocumentationLink {
 	 * @see org.obeonetwork.tools.doc.core.DocumentationLink#delete()
 	 */
 	public void delete() {
-		EcoreUtil.delete(annotation);
+		Session session = SessionManager.INSTANCE.getSession(annotation);
+		if (session != null) {
+			ModelAccessor vpModelAccessor = session.getModelAccessor();
+			vpModelAccessor.eDelete(annotation, session.getSemanticCrossReferencer(), new Predicate<EReference>() {
+		        public boolean apply(EReference reference) {
+		            return DSemanticDecorator.class.isAssignableFrom(reference.getContainerClass());
+		        }
+		    });
+		} else {
+			EcoreUtil.delete(annotation);
+		}
 		name = ""; //$NON-NLS-1$
 		value = ""; //$NON-NLS-1$
 		annotation = null;

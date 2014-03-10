@@ -28,6 +28,7 @@ import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
@@ -40,8 +41,6 @@ import org.obeonetwork.dsl.requirement.Requirement;
 import org.obeonetwork.tools.requirement.RequirementLinkerPlugin;
 import org.obeonetwork.tools.requirement.core.util.RequirementService;
 import org.obeonetwork.tools.requirement.wizard.util.RequirementsRepositoriesContentProvider;
-
-import fr.obeo.dsl.viewpoint.ui.tools.api.views.ViewHelper;
 
 public class LinkRequirementsDialog extends TitleAreaDialog {
 

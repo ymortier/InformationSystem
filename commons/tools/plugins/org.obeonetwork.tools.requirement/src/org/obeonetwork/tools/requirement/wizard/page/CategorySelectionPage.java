@@ -13,6 +13,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -29,8 +30,6 @@ import org.obeonetwork.tools.requirement.RequirementLinkerPlugin;
 import org.obeonetwork.tools.requirement.core.util.RequirementService;
 import org.obeonetwork.tools.requirement.wizard.util.LinkedRequirementsLabelProvider;
 import org.obeonetwork.tools.requirement.wizard.util.RequirementsRepositoriesContentProvider;
-
-import fr.obeo.dsl.viewpoint.ui.tools.api.views.ViewHelper;
 
 /**
  * @author <a href="goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
