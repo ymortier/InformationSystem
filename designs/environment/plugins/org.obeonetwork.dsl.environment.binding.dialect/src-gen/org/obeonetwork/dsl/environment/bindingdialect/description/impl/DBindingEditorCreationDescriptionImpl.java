@@ -181,7 +181,7 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#getMappings()
+	 * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#getMappings()
 	 * @generated NOT
 	 */
 	@Override
@@ -210,7 +210,7 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#basicGetRepresentationDescription()
+	 * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#basicGetRepresentationDescription()
 	 * @generated NOT
 	 */
 	@Override
@@ -221,7 +221,7 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#getRepresentationDescription()
+	 * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#getRepresentationDescription()
 	 * @generated NOT
 	 */
 	@Override

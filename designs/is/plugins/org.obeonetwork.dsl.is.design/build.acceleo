@@ -18,7 +18,7 @@
         <acceleoCompiler 
             sourceFolder="${target.folder}"
             outputFolder="${target.folder}"
-            dependencies=""
+            dependencies="${target.folder}/../../org.obeonetwork.dsl.cinematic;${target.folder}/../../org.obeonetwork.dsl.environment;${target.folder}/../../org.obeonetwork.dsl.entity;${target.folder}/../../org.obeonetwork.dsl.soa;${target.folder}/../../org.obeonetwork.dsl.environment.binding.dialect;${target.folder}/../../org.eclipse.sirius;${target.folder}/../../org.obeonetwork.dsl.overview;${target.folder}/../../org.obeonetwork.dsl.cinematic.design;${target.folder}/../../org.obeonetwork.dsl.cinematic.edit;${target.folder}/../../org.obeonetwork.dsl.environment.edit;"
             binaryResource="false"
             packagesToRegister="">
         </acceleoCompiler>

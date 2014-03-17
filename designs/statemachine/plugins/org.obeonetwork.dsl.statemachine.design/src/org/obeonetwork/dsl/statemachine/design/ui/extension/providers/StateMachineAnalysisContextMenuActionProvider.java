@@ -88,8 +88,8 @@ public class StateMachineAnalysisContextMenuActionProvider implements IContextMe
 //		IViewPart modelContentView = PlatformUI.getWorkbench()
 //												.getActiveWorkbenchWindow()
 //												.getActivePage()
-//												.findView("fr.obeo.dsl.viewpoint.ui.tools.views.model.explorer");
-////		.findView("fr.obeo.dsl.viewpoint.ui.tools.views.sessionview");
+//												.findView("org.eclipse.sirius.ui.tools.views.model.explorer");
+////		.findView("org.eclipse.sirius.ui.tools.views.sessionview");
 //		try {
 //			Field f = DesignerSessionView.class.getDeclaredField("contextMenu");
 //			f.setAccessible(true);

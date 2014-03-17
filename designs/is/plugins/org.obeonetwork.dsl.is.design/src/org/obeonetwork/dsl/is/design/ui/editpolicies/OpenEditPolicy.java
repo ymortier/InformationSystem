@@ -24,10 +24,10 @@
 //import org.eclipse.gef.commands.CompoundCommand;
 //import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 //
-//import fr.obeo.dsl.viewpoint.DDiagram;
-//import fr.obeo.dsl.viewpoint.DDiagramElement;
-//import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-//import fr.obeo.dsl.viewpoint.business.api.helper.ViewPointHelper;
+//import org.eclipse.sirius.viewpoint.DDiagram;
+//import org.eclipse.sirius.viewpoint.DDiagramElement;
+//import org.eclipse.sirius.business.api.dialect.DialectManager;
+//import org.eclipse.sirius.business.api.helper.ViewPointHelper;
 //
 ///**
 // * 

@@ -358,7 +358,7 @@ public class BindingTreeEditor extends EditorPart implements DialectEditor, Sess
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditor#getRepresentation()
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#getRepresentation()
 	 */
 	public DRepresentation getRepresentation() {
 		return getBindingEditorRepresentation();
@@ -403,7 +403,7 @@ public class BindingTreeEditor extends EditorPart implements DialectEditor, Sess
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditor#setDialogFactory(fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditorDialogFactory)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#setDialogFactory(org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory)
 	 */
 	public void setDialogFactory(DialectEditorDialogFactory dialogFactory) {
 		myDialogFactory = dialogFactory;
@@ -412,7 +412,7 @@ public class BindingTreeEditor extends EditorPart implements DialectEditor, Sess
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditor#validateRepresentation()
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#validateRepresentation()
 	 */
 	public void validateRepresentation() {
 		// TODO Auto-generated method stub

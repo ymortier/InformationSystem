@@ -33,7 +33,7 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.AbstractRepresentationDialectServices#isSupported(fr.obeo.dsl.viewpoint.DRepresentation)
+	 * @see org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices#isSupported(org.eclipse.sirius.viewpoint.DRepresentation)
 	 */
 	@Override
 	protected boolean isSupported(DRepresentation representation) {
@@ -43,7 +43,7 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.AbstractRepresentationDialectServices#isSupported(fr.obeo.dsl.viewpoint.description.RepresentationDescription)
+	 * @see org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices#isSupported(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
 	 */
 	@Override
 	protected boolean isSupported(RepresentationDescription representationDesc) {
@@ -53,7 +53,7 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#getDescription(fr.obeo.dsl.viewpoint.DRepresentation)
+	 * @see org.eclipse.sirius.business.api.dialect.DialectServices#getDescription(org.eclipse.sirius.viewpoint.DRepresentation)
 	 */
 	public RepresentationDescription getDescription(DRepresentation representation) {
         if (isSupported(representation)) {
@@ -66,7 +66,7 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#canCreate(org.eclipse.emf.ecore.EObject, fr.obeo.dsl.viewpoint.description.RepresentationDescription)
+	 * @see org.eclipse.sirius.business.api.dialect.DialectServices#canCreate(org.eclipse.emf.ecore.EObject, org.eclipse.sirius.viewpoint.description.RepresentationDescription)
 	 */
 	public boolean canCreate(EObject semantic, RepresentationDescription representationDesc) {
 		boolean result = false;
@@ -81,7 +81,7 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#createRepresentation(java.lang.String, org.eclipse.emf.ecore.EObject, fr.obeo.dsl.viewpoint.description.RepresentationDescription, org.eclipse.core.runtime.IProgressMonitor)
+	 * @see org.eclipse.sirius.business.api.dialect.DialectServices#createRepresentation(java.lang.String, org.eclipse.emf.ecore.EObject, org.eclipse.sirius.viewpoint.description.RepresentationDescription, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public DRepresentation createRepresentation(String name, EObject semantic, RepresentationDescription description, IProgressMonitor monitor) {
 //		ensureDescriptionResourceInMainResourceSet(description);
@@ -99,7 +99,7 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#refresh(fr.obeo.dsl.viewpoint.DRepresentation, org.eclipse.core.runtime.IProgressMonitor)
+	 * @see org.eclipse.sirius.business.api.dialect.DialectServices#refresh(org.eclipse.sirius.viewpoint.DRepresentation, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void refresh(DRepresentation representation, IProgressMonitor monitor) {
 		if (canRefresh(representation)) {
@@ -119,7 +119,7 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#initRepresentations(fr.obeo.dsl.viewpoint.description.Viewpoint, org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.sirius.business.api.dialect.DialectServices#initRepresentations(org.eclipse.sirius.viewpoint.description.Viewpoint, org.eclipse.emf.ecore.EObject)
 	 */
 	public void initRepresentations(Viewpoint viewpoint, EObject semantic) {
 	}

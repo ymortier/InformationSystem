@@ -23,7 +23,7 @@ public class BindingDialectUI implements DialectUI{
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUI#getName()
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUI#getName()
 	 */
 	public String getName() {
 		return "Binding Editor Dialect";
@@ -32,7 +32,7 @@ public class BindingDialectUI implements DialectUI{
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUI#getServices()
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUI#getServices()
 	 */
 	public DialectUIServices getServices() {
 		return new BindingDialectUIServices();

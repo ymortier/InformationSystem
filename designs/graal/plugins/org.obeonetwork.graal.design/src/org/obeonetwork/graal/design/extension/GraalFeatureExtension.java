@@ -29,7 +29,7 @@ public class GraalFeatureExtension implements FeatureExtension {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtension#getName()
+	 * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtension#getName()
 	 */
 	public String getName() {
 		return FEATURE_EXTENSION_NAME;
@@ -38,7 +38,7 @@ public class GraalFeatureExtension implements FeatureExtension {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtension#getServices()
+	 * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtension#getServices()
 	 */
 	public FeatureExtensionServices getServices() {
 		if (services == null) {

@@ -171,7 +171,7 @@
 	<extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID"
+            contributorId="org.eclipse.sirius.table.ui.EditorID"
             labelProvider="org.obeonetwork.graal.design.ui.eef.CustomEEFLabelProvider">
          <propertyCategory
                category="default">
@@ -181,7 +181,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID">
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
          <propertyTab
                category="default"
                id="UserStory"
@@ -193,7 +193,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID">
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
          <propertySection
                class="org.obeonetwork.graal.design.ui.eef.CustomUserStoryPropertiesEditionPartForm"
                filter="org.obeonetwork.graal.design.ui.eef.UserStoryTabPropertiesEditionSection"

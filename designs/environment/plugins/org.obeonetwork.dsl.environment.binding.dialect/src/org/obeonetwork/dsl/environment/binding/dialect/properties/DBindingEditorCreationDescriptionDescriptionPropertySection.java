@@ -30,14 +30,14 @@ import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPac
  */
 public class DBindingEditorCreationDescriptionDescriptionPropertySection extends AbstractComboPropertySection {
 	    /**
-	     * @see fr.obeo.dsl.viewpoint.tree.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
+	     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection#getDefaultLabelText()
 	     */
 	    protected String getDefaultLabelText() {
 	        return "DBindingEditorDescription"; //$NON-NLS-1$
 	    }
 
 	    /**
-	     * @see fr.obeo.dsl.viewpoint.tree.editor.properties.sections.AbstractComboPropertySection#getLabelText()
+	     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection#getLabelText()
 	     */
 	    protected String getLabelText() {
 	        String labelText;
@@ -46,21 +46,21 @@ public class DBindingEditorCreationDescriptionDescriptionPropertySection extends
 	    }
 
 	    /**
-	     * @see fr.obeo.dsl.viewpoint.tree.editor.properties.sections.AbstractComboPropertySection#getFeature()
+	     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection#getFeature()
 	     */
 	    protected EReference getFeature() {
 	        return DescriptionPackage.eINSTANCE.getDBindingEditorCreationDescription_Description();
 	    }
 
 	    /**
-	     * @see fr.obeo.dsl.viewpoint.tree.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
+	     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection#getFeatureValue(int)
 	     */
 	    protected Object getFeatureValue(int index) {
 	        return getFeatureValueAt(index);
 	    }
 
 	    /**
-	     * @see fr.obeo.dsl.viewpoint.tree.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
+	     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection#isEqual(int)
 	     */
 	    protected boolean isEqual(int index) {
 	        boolean isEqual = false;

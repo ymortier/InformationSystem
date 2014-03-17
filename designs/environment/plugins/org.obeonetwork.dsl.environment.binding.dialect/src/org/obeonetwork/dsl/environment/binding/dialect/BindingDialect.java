@@ -25,7 +25,7 @@ public class BindingDialect implements Dialect {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.Dialect#getName()
+	 * @see org.eclipse.sirius.business.api.dialect.Dialect#getName()
 	 */
 	public String getName() {
 		return "BindingDialect";
@@ -34,7 +34,7 @@ public class BindingDialect implements Dialect {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.Dialect#getServices()
+	 * @see org.eclipse.sirius.business.api.dialect.Dialect#getServices()
 	 */
 	public DialectServices getServices() {
 		if (services == null) {

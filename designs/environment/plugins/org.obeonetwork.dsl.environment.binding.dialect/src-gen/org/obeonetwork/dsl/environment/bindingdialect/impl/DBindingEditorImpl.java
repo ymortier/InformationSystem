@@ -361,7 +361,7 @@ public class DBindingEditorImpl extends DRepresentationImpl implements DBindingE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.impl.DRepresentationImpl#getOwnedRepresentationElements()
+	 * @see org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedRepresentationElements()
 	 */
 	@Override
 	public EList<DRepresentationElement> getOwnedRepresentationElements() {
@@ -377,7 +377,7 @@ public class DBindingEditorImpl extends DRepresentationImpl implements DBindingE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.impl.DRepresentationImpl#getRepresentationElements()
+	 * @see org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getRepresentationElements()
 	 */
 	@Override
 	public EList<DRepresentationElement> getRepresentationElements() {

@@ -62,7 +62,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#canHandle(fr.obeo.dsl.viewpoint.DRepresentation)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
 	 */
 	public boolean canHandle(DRepresentation representation) {
 		return representation instanceof DBindingEditor;
@@ -71,7 +71,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
 	 */
 	public boolean canHandleEditor(IEditorPart editor) {
 		return editor instanceof BindingTreeEditor;
@@ -80,7 +80,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#getEditorName(fr.obeo.dsl.viewpoint.DRepresentation)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.viewpoint.DRepresentation)
 	 */
 	public String getEditorName(DRepresentation representation) {
 		return representation.getName();
@@ -89,7 +89,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#closeEditor(org.eclipse.ui.IEditorPart, boolean)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#closeEditor(org.eclipse.ui.IEditorPart, boolean)
 	 */
 	public boolean closeEditor(IEditorPart editorPart, boolean save) {
         boolean result = false;
@@ -109,7 +109,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#createAdapterFactory()
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#createAdapterFactory()
 	 */
 	public AdapterFactory createAdapterFactory() {
         final ComposedAdapterFactory factory = new ComposedAdapterFactory();
@@ -122,7 +122,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(fr.obeo.dsl.viewpoint.DRepresentation, org.eclipse.ui.IEditorPart)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation, org.eclipse.ui.IEditorPart)
 	 */
 	public boolean isRepresentationManagedByEditor(DRepresentation representation, IEditorPart editor) {
 		if (canHandleEditor(editor)) {
@@ -135,7 +135,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(fr.obeo.dsl.viewpoint.description.RepresentationDescription, org.eclipse.ui.IEditorPart)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription, org.eclipse.ui.IEditorPart)
 	 */
 	public boolean isRepresentationDescriptionManagedByEditor(RepresentationDescription description, IEditorPart editor) {
         if (canHandleEditor(editor)) {
@@ -149,7 +149,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#openEditor(fr.obeo.dsl.viewpoint.business.api.session.Session, fr.obeo.dsl.viewpoint.DRepresentation)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#openEditor(org.eclipse.sirius.business.api.session.Session, org.eclipse.sirius.viewpoint.DRepresentation)
 	 */
 	public IEditorPart openEditor(Session session, DRepresentation representation) {
         return openEditor(session, representation, new NullProgressMonitor());
@@ -203,7 +203,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#provideNewChildDescriptors()
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideNewChildDescriptors()
 	 */
 	public Collection<CommandParameter> provideNewChildDescriptors() {
 		final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
@@ -215,7 +215,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#provideRepresentationCreationToolDescriptors(java.lang.Object)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideRepresentationCreationToolDescriptors(java.lang.Object)
 	 */
 	public Collection<CommandParameter> provideRepresentationCreationToolDescriptors(Object feature) {
 		final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
@@ -227,7 +227,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#provideRepresentationNavigationToolDescriptors(java.lang.Object)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideRepresentationNavigationToolDescriptors(java.lang.Object)
 	 */
 	public Collection<CommandParameter> provideRepresentationNavigationToolDescriptors(Object feature) {
 		// TODO Auto-generated method stub
@@ -237,7 +237,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#provideTools(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideTools(org.eclipse.emf.ecore.EObject)
 	 */
 	public Collection<CommandParameter> provideTools(EObject object) {
 		return Collections.emptyList();
@@ -246,7 +246,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#provideAdditionalMappings(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideAdditionalMappings(org.eclipse.emf.ecore.EObject)
 	 */
 	public Collection<CommandParameter> provideAdditionalMappings(EObject object) {
 		return Collections.emptyList();
@@ -255,7 +255,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#canExport(fr.obeo.dsl.viewpoint.ui.business.api.dialect.ExportFormat)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canExport(org.eclipse.sirius.ui.business.api.dialect.ExportFormat)
 	 */
 	public boolean canExport(ExportFormat format) {
 		return false;
@@ -264,7 +264,7 @@ public class BindingDialectUIServices implements DialectUIServices {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices#export(fr.obeo.dsl.viewpoint.DRepresentation, fr.obeo.dsl.viewpoint.business.api.session.Session, org.eclipse.core.runtime.IPath, fr.obeo.dsl.viewpoint.ui.business.api.dialect.ExportFormat, org.eclipse.core.runtime.IProgressMonitor)
+	 * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation, org.eclipse.sirius.business.api.session.Session, org.eclipse.core.runtime.IPath, org.eclipse.sirius.ui.business.api.dialect.ExportFormat, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) {
 		// Nothing to do for binding trees
