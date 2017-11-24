@@ -35,7 +35,9 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
+import org.eclipse.sirius.ui.business.api.dialect.ExportResult;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -310,6 +312,13 @@ public class BindingDialectUIServices implements DialectUIServices {
 	}
 
 	@Override
+	public ExportResult exportWithResult(DRepresentation representation, Session session, IPath path, ExportFormat format,
+			IProgressMonitor monitor) throws SizeTooLargeException {
+		// Nothing to do for binding trees
+		return null;
+	}
+
+	@Override
 	public ILabelProvider getHierarchyLabelProvider(ILabelProvider labelProvider) {
 		return labelProvider;
 	}
@@ -351,4 +360,10 @@ public class BindingDialectUIServices implements DialectUIServices {
 	// added for compatibility between sirius 3.0 & 3.1
 	public void selectAndReveal(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
 	}
+
+	@Override
+	public void refreshEditor(DialectEditor dialectEditor, IProgressMonitor monitor) {
+		// nothing to do.
+	}
+
 }
